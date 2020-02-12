@@ -137,10 +137,14 @@
                     </h5>
                 </div>
                 <div class="modal-body">
-                    <form>
+                    @using (Html.BeginForm())
+                    {
+
+                        @Html.AntiForgeryToken()
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
+                                
                                     <label>梯次</label>
                                     <select type="text"
                                             class="form-control border-input"
@@ -185,7 +189,7 @@
                                     <small>(建議尺寸： 500px X 500px)</small>
                                 </div>
                                 <img width="30%"
-                                     style="margin-bottom:20px;"
+                                     style="margin-bottom: 20px;"
                                      src="https://fakeimg.pl/500x500"
                                      alt="" />
                             </div>
@@ -205,7 +209,7 @@
                             </div>
                         </div>
                         <div class="clearfix"></div>
-                    </form>
+                    }
                 </div>
                 <div class="modal-footer">
                     <button type="button"

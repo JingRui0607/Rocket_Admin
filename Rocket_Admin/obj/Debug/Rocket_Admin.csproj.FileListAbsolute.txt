@@ -88,3 +88,4 @@ C:\Users\jingrui\source\repos\Rocket_Admin\Rocket_Admin\obj\Debug\Rocket_Admin.M
 C:\Users\jingrui\source\repos\Rocket_Admin\Rocket_Admin\obj\Debug\Rocket_Admin.csproj.GenerateResource.cache
 C:\Users\jingrui\source\repos\Rocket_Admin\Rocket_Admin\obj\Debug\Rocket_Admin.Migrations.UpdateModel.resources
 C:\Users\jingrui\source\repos\Rocket_Admin\Rocket_Admin\obj\Debug\Rocket_Admin.csprojAssemblyReference.cache
+C:\Users\jingrui\source\repos\Rocket_Admin\Rocket_Admin\obj\Debug\Rocket_Admin.Migrations.CreateUserModel.resources

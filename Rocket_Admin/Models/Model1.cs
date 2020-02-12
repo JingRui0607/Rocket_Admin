@@ -16,6 +16,7 @@ namespace Rocket_Admin.Models
         public virtual DbSet<ORID_data> ORID_data { get; set; }
         public virtual DbSet<Student> Student { get; set; }
         public virtual DbSet<week> week { get; set; }
+        public virtual DbSet<User> Users { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

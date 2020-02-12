@@ -143,12 +143,17 @@
     <Compile Include="Migrations\202002120953162_UpdateModel.Designer.cs">
       <DependentUpon>202002120953162_UpdateModel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202002121220473_CreateUserModel.cs" />
+    <Compile Include="Migrations\202002121220473_CreateUserModel.Designer.cs">
+      <DependentUpon>202002121220473_CreateUserModel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Class.cs" />
     <Compile Include="Models\EnumList.cs" />
     <Compile Include="Models\Model1.cs" />
     <Compile Include="Models\ORID_data.cs" />
     <Compile Include="Models\Student.cs" />
+    <Compile Include="Models\User.cs" />
     <Compile Include="Models\week.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -226,6 +231,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202002120953162_UpdateModel.resx">
       <DependentUpon>202002120953162_UpdateModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202002121220473_CreateUserModel.resx">
+      <DependentUpon>202002121220473_CreateUserModel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
