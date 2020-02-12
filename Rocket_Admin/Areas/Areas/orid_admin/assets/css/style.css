@@ -1,0 +1,49 @@
+.table-center td,.table-center th{
+	text-align: center;
+}
+.td-actions a{
+	font-size: 1.8rem;
+}
+.pd-15 {
+	padding: 15px;
+}
+.pd-r-15 {
+	padding-right: 15px;
+}
+.m-r-15 {
+	margin-right: 15px;
+}
+.pd-b-15 {
+	padding-bottom: 15px;
+}
+.img-w100 img{
+	width: 100%;
+}
+
+.bg_none {
+	background: transparent;
+	border: 0;
+}
+.bg_full {
+    background-image: url(../img/bg_full.jpg);
+    -webkit-background-size: cover;
+    background-size: cover;
+	background-position: center;
+	min-height: 100vh;
+}
+
+.text-white {
+	color: #fff!important;
+}
+.mb-2 {
+	margin-bottom: 20px;
+}
+/* card */
+
+.card {
+    border-radius: 4px;
+    background-color: #FFFFFF;
+	margin-bottom: 30px;
+	padding: 30px;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+}

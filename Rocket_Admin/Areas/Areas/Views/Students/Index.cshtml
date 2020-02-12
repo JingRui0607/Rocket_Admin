@@ -3,85 +3,208 @@
 @{
     ViewBag.Title = "Index";
 }
+<div class="content products_list">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="header">
+                        <h4 class="title">
+                            <div class="dropdown pull-left">
+                                <button href="#"
+                                        class="btn dropdown-toggle"
+                                        data-toggle="dropdown"
+                                        aria-expanded="false">
+                                    梯次篩選
+                                    <b class="caret"></b>
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#">1</a></li>
+                                    <li><a href="#">2</a></li>
+                                    <li><a href="#">3</a></li>
+                                </ul>
+                            </div>
+                            <button class="btn btn-success pull-right"
+                                    type="button"
+                                    name=""
+                                    title=""
+                                    data-toggle="modal"
+                                    data-target="#add_student">
+                                <i class="glyphicon fa fa-plus"></i>新增學員
+                            </button>
+                        </h4>
+                        <p class="category"></p>
+                    </div>
+                    <table class="table table-shopping img-w100">
+                        <thead>
+                            <tr>
+                                <th style="width:10%"> @Html.DisplayNameFor(model => model._class)</th>
+                                <th style="width: 13%;">@Html.DisplayNameFor(model => model.image)</th>
+                                <th>@Html.DisplayNameFor(model => model.name)</th>
+                                <th>@Html.DisplayNameFor(model => model.exOccupation)</th>
+                                <th>@Html.DisplayNameFor(model => model.futureOccupation)</th>
+                                <th>@Html.DisplayNameFor(model => model.presence)</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
 
-<h2>Index</h2>
+                                    <td>
+                                        @Html.DisplayFor(model => item._class)
+                                    </td>
+                                    <td><img src="/Areas/Admin/orid_admin/assets/img/user/@Html.DisplayFor(model => item.image)" alt="" /></td>
+                                    <td>
+                                        @Html.DisplayFor(model => item.name)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(model => item.exOccupation)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(model => item.futureOccupation)
+                                    </td>
+                                    <td>
+                                        <span class="label label-warning">@Html.DisplayFor(model => item.presence)</span>
+                                    </td>
+                                    <td class="td-actions">
+                                        <a href="#"
+                                           rel="tooltip"
+                                           title=""
+                                           data-toggle="modal"
+                                           data-target="#add_student"
+                                           class="btn btn-success btn-simple btn-xs"
+                                           data-original-title="編輯">
+                                            <i class="ti-pencil-alt"></i>
+                                        </a>
+                                        <a href="#"
+                                           rel="tooltip"
+                                           title=""
+                                           class="btn btn-danger btn-simple btn-xs"
+                                           data-original-title="刪除">
+                                            <i class="ti-close"></i>
+                                        </a>
+                                    </td>
+                                </tr>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.image)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model._class)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.startDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.endDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.exOccupation)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.futureOccupation)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.initDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.firstMon)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.presence)
-        </th>
-        <th></th>
-    </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.image)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item._class)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.startDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.endDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.exOccupation)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.futureOccupation)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.initDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.firstMon)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.presence)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.id })
-        </td>
-    </tr>
+
+
+@section model {
+    <!-- 新增學員 Modal -->
+    <div class="modal fade add_student"
+         id="add_student"
+         tabindex="-1"
+         role="dialog"
+         aria-labelledby="add_student"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="add_student">
+                        新增學員<button type="button"
+                                    class="close"
+                                    data-dismiss="modal"
+                                    aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </h5>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>梯次</label>
+                                    <select type="text"
+                                            class="form-control border-input"
+                                            value="">
+                                        <option value="123" selected>請選擇</option>
+                                        <option value="1">第1梯</option>
+                                        <option value="2">第2梯</option>
+                                        <option value="3">第3梯</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>學員名稱</label>
+                                    <input type="text"
+                                           class="form-control border-input"
+                                           value="" />
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>原本職業</label>
+                                    <input type="number"
+                                           class="form-control border-input"
+                                           value="" />
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>目標職業</label>
+                                    <input type="number"
+                                           class="form-control border-input"
+                                           value="" />
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label>大頭貼</label>
+                                    <input type="file"
+                                           class="form-control border-input"
+                                           value="" />
+                                    <small>(建議尺寸： 500px X 500px)</small>
+                                </div>
+                                <img width="30%"
+                                     style="margin-bottom:20px;"
+                                     src="https://fakeimg.pl/500x500"
+                                     alt="" />
+                            </div>
+
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label>狀態</label>
+                                    <select type="text"
+                                            class="form-control border-input"
+                                            value="">
+                                        <option value="" selected>請選擇</option>
+                                        <option value="">培訓中</option>
+                                        <option value="">結訓</option>
+                                        <option value="">退訓</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button"
+                            class="btn btn-secondary"
+                            data-dismiss="modal">
+                        取消
+                    </button>
+                    <button type="button" class="btn btn-primary">確認</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 新增學員 Modal結束 -->
+
+
 }
 
-</table>
+
