@@ -128,11 +128,18 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Areas\Areas\AreasAreaRegistration.cs" />
+    <Compile Include="Areas\Areas\Controllers\ClassesController.cs" />
+    <Compile Include="Areas\Areas\Controllers\StudentsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Class.cs" />
     <Compile Include="Models\Model1.cs" />
+    <Compile Include="Models\ORID_data.cs" />
+    <Compile Include="Models\Student.cs" />
+    <Compile Include="Models\week.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -146,6 +153,19 @@
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Areas\Areas\Views\web.config" />
+    <Content Include="Areas\Areas\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Areas\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Areas\Views\Students\Create.cshtml" />
+    <Content Include="Areas\Areas\Views\Students\Delete.cshtml" />
+    <Content Include="Areas\Areas\Views\Students\Details.cshtml" />
+    <Content Include="Areas\Areas\Views\Students\Edit.cshtml" />
+    <Content Include="Areas\Areas\Views\Students\Index.cshtml" />
+    <Content Include="Areas\Areas\Views\Classes\Create.cshtml" />
+    <Content Include="Areas\Areas\Views\Classes\Delete.cshtml" />
+    <Content Include="Areas\Areas\Views\Classes\Details.cshtml" />
+    <Content Include="Areas\Areas\Views\Classes\Edit.cshtml" />
+    <Content Include="Areas\Areas\Views\Classes\Index.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -174,6 +194,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\Areas\Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

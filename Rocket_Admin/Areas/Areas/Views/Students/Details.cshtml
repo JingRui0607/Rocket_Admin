@@ -1,0 +1,98 @@
+﻿@model Rocket_Admin.Models.Student
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Student</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.image)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.image)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model._class)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model._class)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.startDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.startDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.endDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.endDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.exOccupation)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.exOccupation)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.futureOccupation)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.futureOccupation)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.initDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.initDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.firstMon)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.firstMon)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.presence)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.presence)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
