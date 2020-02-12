@@ -131,6 +131,7 @@
     <Compile Include="Areas\Areas\AreasAreaRegistration.cs" />
     <Compile Include="Areas\Areas\Controllers\ClassesController.cs" />
     <Compile Include="Areas\Areas\Controllers\StudentsController.cs" />
+    <Compile Include="Areas\Areas\Controllers\UsersController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -182,6 +183,11 @@
     <Content Include="Areas\Areas\Views\Classes\Edit.cshtml" />
     <Content Include="Areas\Areas\Views\Classes\Index.cshtml" />
     <Content Include="Areas\Areas\Views\Shared\_AdminMasterPage.cshtml" />
+    <Content Include="Areas\Areas\Views\Users\Create.cshtml" />
+    <Content Include="Areas\Areas\Views\Users\Delete.cshtml" />
+    <Content Include="Areas\Areas\Views\Users\Details.cshtml" />
+    <Content Include="Areas\Areas\Views\Users\Edit.cshtml" />
+    <Content Include="Areas\Areas\Views\Users\Index.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
