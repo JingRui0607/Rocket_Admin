@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29409.12
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rocket_Admin", "Rocket_Admin\Rocket_Admin.csproj", "{AED429B8-ED99-4CFD-A46D-501940B3630F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AED429B8-ED99-4CFD-A46D-501940B3630F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AED429B8-ED99-4CFD-A46D-501940B3630F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AED429B8-ED99-4CFD-A46D-501940B3630F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AED429B8-ED99-4CFD-A46D-501940B3630F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {BC0A8351-790F-4472-A7F7-012F9209AA86}
+	EndGlobalSection
+EndGlobal
