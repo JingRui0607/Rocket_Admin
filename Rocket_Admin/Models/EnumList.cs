@@ -24,7 +24,7 @@ namespace Rocket_Admin.Models
             男
         }
 
-        public enum ClassType
+        public enum presenceType
         {
             陪訓中 = 1,
             結訓 = 0,

@@ -81,7 +81,10 @@ C:\Users\jingrui\source\repos\Rocket_Admin\Rocket_Admin\bin\zh-Hant\System.Web.R
 C:\Users\jingrui\source\repos\Rocket_Admin\Rocket_Admin\bin\zh-Hant\System.Web.WebPages.resources.dll
 C:\Users\jingrui\source\repos\Rocket_Admin\Rocket_Admin\bin\zh-Hant\System.Web.WebPages.Deployment.resources.dll
 C:\Users\jingrui\source\repos\Rocket_Admin\Rocket_Admin\bin\zh-Hant\System.Web.WebPages.Razor.resources.dll
-C:\Users\jingrui\source\repos\Rocket_Admin\Rocket_Admin\obj\Debug\Rocket_Admin.csprojAssemblyReference.cache
 C:\Users\jingrui\source\repos\Rocket_Admin\Rocket_Admin\obj\Debug\Rocket_Admin.csproj.CopyComplete
 C:\Users\jingrui\source\repos\Rocket_Admin\Rocket_Admin\obj\Debug\Rocket_Admin.dll
 C:\Users\jingrui\source\repos\Rocket_Admin\Rocket_Admin\obj\Debug\Rocket_Admin.pdb
+C:\Users\jingrui\source\repos\Rocket_Admin\Rocket_Admin\obj\Debug\Rocket_Admin.Migrations.init.resources
+C:\Users\jingrui\source\repos\Rocket_Admin\Rocket_Admin\obj\Debug\Rocket_Admin.csproj.GenerateResource.cache
+C:\Users\jingrui\source\repos\Rocket_Admin\Rocket_Admin\obj\Debug\Rocket_Admin.Migrations.UpdateModel.resources
+C:\Users\jingrui\source\repos\Rocket_Admin\Rocket_Admin\obj\Debug\Rocket_Admin.csprojAssemblyReference.cache

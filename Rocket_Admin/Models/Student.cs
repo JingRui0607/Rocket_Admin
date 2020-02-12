@@ -5,6 +5,7 @@ namespace Rocket_Admin.Models
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
+    using static Rocket_Admin.Models.EnumList;
 
     [Table("Student")]
     public partial class Student
@@ -31,6 +32,6 @@ namespace Rocket_Admin.Models
                         "ORID的星期一")]
         public DateTime? firstMon { get; set; }
         [Display(Name = "狀態")]
-        public bool? presence { get; set; }
+        public presenceType presence { get; set; }
     }
 }

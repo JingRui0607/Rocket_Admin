@@ -1,4 +1,5 @@
-﻿@model IEnumerable<Rocket_Admin.Models.Student>
+﻿@using Rocket_Admin.Models
+@model IEnumerable<Rocket_Admin.Models.Student>
 
 @{
     ViewBag.Title = "Index";
@@ -66,7 +67,23 @@
                                         @Html.DisplayFor(model => item.futureOccupation)
                                     </td>
                                     <td>
-                                        <span class="label label-warning">@Html.DisplayFor(model => item.presence)</span>
+                                        @{
+                                            string presence = "";
+                                            if (item.presence == EnumList.presenceType.結訓)
+                                            {
+                                                presence = $"<span class=\"label label-warning\">{item.presence}</span>";
+                                            }
+                                            else if (item.presence == EnumList.presenceType.陪訓中)
+                                            {
+                                                presence = $"<span class=\"label label-success\">{item.presence}</span>";
+                                            }
+                                            else
+                                            {
+                                                presence = $"<span class=\"label label-default\">{item.presence}</span>";
+                                            }
+
+                                        }
+                                       @Html.Raw(presence)
                                     </td>
                                     <td class="td-actions">
                                         <a href="#"

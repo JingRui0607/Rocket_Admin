@@ -135,7 +135,17 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202002120930375_init.cs" />
+    <Compile Include="Migrations\202002120930375_init.Designer.cs">
+      <DependentUpon>202002120930375_init.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202002120953162_UpdateModel.cs" />
+    <Compile Include="Migrations\202002120953162_UpdateModel.Designer.cs">
+      <DependentUpon>202002120953162_UpdateModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Class.cs" />
+    <Compile Include="Models\EnumList.cs" />
     <Compile Include="Models\Model1.cs" />
     <Compile Include="Models\ORID_data.cs" />
     <Compile Include="Models\Student.cs" />
@@ -209,6 +219,14 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.3.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202002120930375_init.resx">
+      <DependentUpon>202002120930375_init.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202002120953162_UpdateModel.resx">
+      <DependentUpon>202002120953162_UpdateModel.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
