@@ -47,16 +47,18 @@ namespace Rocket_Admin.Areas.Areas.Controllers
         // 詳細資訊，請參閱 https://go.microsoft.com/fwlink/?LinkId=317598。
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Session,startDate,endDate")] Class @class)
+        public ActionResult Create(string Session, string firstdate, string enddate)
         {
-            if (ModelState.IsValid)
-            {
-                db.Class.Add(@class);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
+            Class classes = new Class();
+            classes.Session = Convert.ToInt32(Session);
+            classes.startDate = Convert.ToDateTime(firstdate);
+            classes.endDate = Convert.ToDateTime(enddate);
 
-            return View(@class);
+                db.Class.Add(classes);
+                db.SaveChanges();
+                ViewBag.close = "true";
+                return View();
+            
         }
 
         // GET: Areas/Classes/Edit/5
