@@ -14,25 +14,40 @@ namespace Rocket_Admin.Areas.Areas.Controllers
     {
         private Model1 db = new Model1();
 
+
+
+        public ActionResult login()
+        {
+            return View();
+        }
+
+        [HttpPost] //只接受post
+        public ActionResult login(string Account, string Password)
+        {
+            return View();
+        }
+
+
+
         // GET: Areas/Users
         public ActionResult Index()
         {
             return View(db.Users.ToList());
         }
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Index(string oldPassword ,string newPassword ,string newPassword2 )
-        {
-            if (ModelState.IsValid)
-            {
-                db.Users.Add(user);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult Index(string oldPassword ,string newPassword ,string newPassword2 )
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        db.Users.Add(user);
+        //        db.SaveChanges();
+        //        return RedirectToAction("Index");
+        //    }
 
-            return View(user);
-        }
+        //    return View(user);
+        //}
 
         // GET: Areas/Users/Details/5
         public ActionResult Details(int? id)
