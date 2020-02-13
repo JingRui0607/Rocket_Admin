@@ -65,22 +65,26 @@
                     <div class="col-md-6">
                         <div class="form-group">
 
-                            @Html.LabelFor(model => model, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <label>梯次</label>
                             <select type="text"
                                     class="form-control border-input"
                                     value="">
                                 <option value="123" selected>請選擇</option>
-                                
+
                                 @{
                                     string option = "";
+                                    int max = ViewBag.Class;
+                                    for (int i = 1; i <= max; i++)
+                                    {
 
-                                    //for(int i =1 ; i< Model._class\\\)
+                                        option+= $"<option value=\"{i}\">第{i}梯</option>";
+
+                                    }
 
                                 }
+                                 @Html.Raw(option)
 
-                                <option value="1">第1梯</option>
-                                <option value="2">第2梯</option>
-                                <option value="3">第3梯</option>
+                               
                             </select>
                         </div>
                     </div>

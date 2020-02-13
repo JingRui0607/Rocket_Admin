@@ -38,8 +38,8 @@ namespace Rocket_Admin.Areas.Areas.Controllers
         // GET: Areas/Students/Create
         public ActionResult Create()
         {
-            
 
+            ViewBag.Class= db.Class.Max(x => x.Session);
 
             return View();
         }
