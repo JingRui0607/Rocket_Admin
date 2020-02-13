@@ -57,12 +57,19 @@ namespace Rocket_Admin.Areas.Areas.Controllers
             Response.Cookies.Add(authenticationcookie);
         }
 
+            public ActionResult SignOut()
+            {
+                FormsAuthentication.SignOut();
+                return RedirectToAction("login");
+            }
 
-            [Authorize]
+
+
+        [Authorize]
         // GET: Areas/Users
         public ActionResult Index()
         {
-            return View(db.Users.ToList());
+            return View();
         }
 
         //[HttpPost]
