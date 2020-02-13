@@ -82,7 +82,7 @@
                     <table class="table table-shopping img-w100">
                         <thead>
                             <tr>
-                                @*<th style="width:10%"> @Html.DisplayNameFor(model => model._class)</th>*@
+                                <th style="width:10%"> 梯次</th>
                                 <th style="width: 13%;">@Html.DisplayNameFor(model => model.image)</th>
                                 <th>@Html.DisplayNameFor(model => model.name)</th>
                                 <th>@Html.DisplayNameFor(model => model.exOccupation)</th>
@@ -97,7 +97,7 @@
                                 <tr>
 
                                     <td>
-                                        @*@Html.DisplayFor(model => item._class)*@
+                                        @Html.DisplayFor(model => item.CId)
                                     </td>
                                     <td><img src="/Areas/Areas/orid_admin/assets/img/user/@Html.DisplayFor(model => item.image)" alt="" /></td>
                                     <td>
@@ -273,8 +273,9 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button"
-                            class="btn btn-secondary"
-                            data-dismiss="modal">
+                            class="btn btn-secondary modal_hide"
+                            data-dismiss="modal"
+                            >
                         取消
                     </button>
                     <button type="button" class="btn btn-primary">確認</button>
@@ -282,7 +283,9 @@
             </div>
         </div>
     </div>
-
+    <script>$( ".modal_hide" ).click(function() {
+    $('.modal').modal('hide')
+});</script>
     <!-- 編輯學員 Modal結束 -->
 
 }

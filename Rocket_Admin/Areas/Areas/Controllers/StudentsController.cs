@@ -49,13 +49,14 @@ namespace Rocket_Admin.Areas.Areas.Controllers
         // 詳細資訊，請參閱 https://go.microsoft.com/fwlink/?LinkId=317598。
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "id,name,image,_class,startDate,endDate,exOccupation,futureOccupation,initDate,firstMon,presence")] Student student)
+        public ActionResult Create([Bind(Include = "id,name,image,exOccupation,futureOccupation,initDate,firstMon,presence,CId")] Student student)
         {
             if (ModelState.IsValid)
             {
                 db.Student.Add(student);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                ViewBag.close = "true";
+                return View();
             }
 
             return View(student);

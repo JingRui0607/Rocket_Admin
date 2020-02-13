@@ -41,6 +41,16 @@
     </style>
 </head>
 
+@if (ViewBag.close == "true")
+{
+    <script>
+    
+        parent.$('.modal').modal('hide');
+        parent.location.href = "/Areas/Students/Index";
+
+    </script>
+}
+
 <body>
     <div class="modal-content">
         <div class="modal-header">
@@ -68,7 +78,8 @@
                             <label>梯次</label>
                             <select type="text"
                                     class="form-control border-input"
-                                    value="">
+                                    value=""
+                                    name="class">
                                 <option value="123" selected>請選擇</option>
 
                                 @{
@@ -91,25 +102,27 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label>學員名稱</label>
-                            <input type="text"
-                                   class="form-control border-input"
-                                   value="" />
+                            
+                            
+                            @Html.EditorFor(model => model.name, new { htmlAttributes = new { @class = "form-control border-input" } })
+                            @Html.ValidationMessageFor(model => model.name, "", new { @class = "text-danger" })
+                            
+
+                           
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
                             <label>原本職業</label>
-                            <input type="number"
-                                   class="form-control border-input"
-                                   value="" />
+                            @Html.EditorFor(model => model.exOccupation, new { htmlAttributes = new { @class = "form-control border-input" } })
+                            @Html.ValidationMessageFor(model => model.exOccupation, "", new { @class = "text-danger" })
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
                             <label>目標職業</label>
-                            <input type="number"
-                                   class="form-control border-input"
-                                   value="" />
+                            @Html.EditorFor(model => model.futureOccupation, new { htmlAttributes = new { @class = "form-control border-input" } })
+                            @Html.ValidationMessageFor(model => model.futureOccupation, "", new { @class = "text-danger" })
                         </div>
                     </div>
                     <div class="col-md-12">
@@ -145,11 +158,12 @@
             </div>
             <div class="modal-footer">
                 <button type="button"
-                        class="btn btn-secondary"
-                        data-dismiss="modal">
+                        class="btn btn-secondary modal_hide"
+                        data-dismiss="modal"
+                        name="close">
                     取消
                 </button>
-                <button type="button" class="btn btn-primary">確認</button>
+                <button type="submit" class="btn btn-primary">確認</button>
             </div>
 
 
@@ -167,7 +181,11 @@
 <script src="/Areas/Areas/orid_admin/assets/js/bootstrap-notify.js"></script>
 <script src="/Areas/Areas/orid_admin/assets/js/paper-dashboard.js"></script>
 <script src="/Areas/Areas/orid_admin/assets/js/demo.js"></script>
-
+<script>
+    $( ".modal_hide" ).click(function() {
+        parent.$('.modal').modal('hide');
+    });
+</script>
 </html>
 
 @*@using (Html.BeginForm())
