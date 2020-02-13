@@ -20,6 +20,20 @@ namespace Rocket_Admin.Areas.Areas.Controllers
             return View(db.Users.ToList());
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Index(string oldPassword ,string newPassword ,string newPassword2 )
+        {
+            if (ModelState.IsValid)
+            {
+                db.Users.Add(user);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+
+            return View(user);
+        }
+
         // GET: Areas/Users/Details/5
         public ActionResult Details(int? id)
         {

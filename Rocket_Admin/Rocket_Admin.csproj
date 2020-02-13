@@ -188,6 +188,7 @@
     <Content Include="Areas\Areas\Views\Users\Details.cshtml" />
     <Content Include="Areas\Areas\Views\Users\Edit.cshtml" />
     <Content Include="Areas\Areas\Views\Users\Index.cshtml" />
+    <Content Include="Areas\Areas\Views\Users\login.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
