@@ -6,6 +6,8 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
+using Newtonsoft.Json;
 using Rocket_Admin.Models;
 
 namespace Rocket_Admin.Areas.Areas.Controllers
@@ -21,10 +23,38 @@ namespace Rocket_Admin.Areas.Areas.Controllers
             return View();
         }
 
-        [HttpPost] //只接受post
-        public ActionResult login(string Account, string Password)
+        //[HttpPost] //只接受post
+        //public ActionResult login(string Account, string Password)
+        //{
+        //    User user = new User();
+
+            // member = db.members.Where(x => x.Account == Account && x.PasswordSalt == Password).FirstOrDefault();//FirstOrDefault()只抓第一筆
+            //if (member == null)
+            //{
+            //    ViewBag.Message = "登入失敗";
+            //    return View();
+            //}
+            //string userData = JsonConvert.SerializeObject(member);
+            //SetAuthenTicket(userData, member.Account);
+            //return RedirectToAction("Index", "members", new { Areas = "sys" });
+            // （actionName , controllerName , 路由網址 還不是很懂）
+
+
+
+            
+        //}
+
+        void SetAuthenTicket(string userData, string userId)
         {
-            return View();
+            //宣告一個驗證票
+            FormsAuthenticationTicket ticket = new FormsAuthenticationTicket(1, userId, DateTime.Now, DateTime.Now.AddHours(2), false, userData);
+            //加密驗證票
+            string encryptedTicket = FormsAuthentication.Encrypt(ticket);
+            //建立Cookie
+            HttpCookie authenticationcookie = new HttpCookie(FormsAuthentication.FormsCookieName, encryptedTicket);
+            authenticationcookie.Expires = DateTime.Now.AddHours(2);
+            //將Cookie寫入回應
+            Response.Cookies.Add(authenticationcookie);
         }
 
 

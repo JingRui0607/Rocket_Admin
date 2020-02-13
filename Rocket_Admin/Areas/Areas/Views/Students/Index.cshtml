@@ -82,7 +82,7 @@
                     <table class="table table-shopping img-w100">
                         <thead>
                             <tr>
-                                <th style="width:10%"> @Html.DisplayNameFor(model => model._class)</th>
+                                @*<th style="width:10%"> @Html.DisplayNameFor(model => model._class)</th>*@
                                 <th style="width: 13%;">@Html.DisplayNameFor(model => model.image)</th>
                                 <th>@Html.DisplayNameFor(model => model.name)</th>
                                 <th>@Html.DisplayNameFor(model => model.exOccupation)</th>
@@ -97,7 +97,7 @@
                                 <tr>
 
                                     <td>
-                                        @Html.DisplayFor(model => item._class)
+                                        @*@Html.DisplayFor(model => item._class)*@
                                     </td>
                                     <td><img src="/Areas/Areas/orid_admin/assets/img/user/@Html.DisplayFor(model => item.image)" alt="" /></td>
                                     <td>
@@ -170,11 +170,9 @@
          aria-labelledby="add_student"
          aria-hidden="true">
         <div class="modal-dialog" role="document">
-            
 
+                <iframe src="/Areas/Students/Create" width="100%" height="696px" frameborder="0" scrolling="no" style="border-radius: 6px"></iframe>
 
-                <iframe src="/Areas/Students/Create" width="100%" height="687px" frameborder="0" scrolling="no"></iframe>
-           
         </div>
     </div>
 

@@ -148,6 +148,10 @@
     <Compile Include="Migrations\202002121220473_CreateUserModel.Designer.cs">
       <DependentUpon>202002121220473_CreateUserModel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202002130704133_update_StudentForeignKey.cs" />
+    <Compile Include="Migrations\202002130704133_update_StudentForeignKey.Designer.cs">
+      <DependentUpon>202002130704133_update_StudentForeignKey.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Class.cs" />
     <Compile Include="Models\EnumList.cs" />
@@ -241,6 +245,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202002121220473_CreateUserModel.resx">
       <DependentUpon>202002121220473_CreateUserModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202002130704133_update_StudentForeignKey.resx">
+      <DependentUpon>202002130704133_update_StudentForeignKey.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

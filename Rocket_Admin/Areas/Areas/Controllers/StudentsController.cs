@@ -38,6 +38,9 @@ namespace Rocket_Admin.Areas.Areas.Controllers
         // GET: Areas/Students/Create
         public ActionResult Create()
         {
+            
+
+
             return View();
         }
 

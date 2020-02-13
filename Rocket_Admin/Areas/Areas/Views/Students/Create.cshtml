@@ -30,112 +30,132 @@
     <link href="/Areas/Areas/orid_admin/assets/css/font_muli.css" rel="stylesheet" type="text/css" />
     <link href="/Areas/Areas/orid_admin/assets/css/themify-icons.css" rel="stylesheet" />
     <link href="/Areas/Areas/orid_admin/assets/css/style.css" rel="stylesheet" />
+    <style>
+        .col-md-6 {
+            width: 50%;
+        }
+        .col-md-12 {
+            width: 100%;
+        }
+
+    </style>
 </head>
 
 <body>
-<div class="modal-content">
-    <div class="modal-header">
-        <h5 class="modal-title" id="add_student">
-            新增學員
-            <button type="button"
-                    class="close"
-                    data-dismiss="modal"
-                    aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </h5>
-    </div>
- <form>
-        <div class="modal-body">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="add_student">
+                新增學員
+                <button type="button"
+                        class="close"
+                        data-dismiss="modal"
+                        aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </h5>
+        </div>
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            <div class="modal-body">
 
 
-            
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="form-group">
 
-                        <label>梯次</label>
-                        <select type="text"
-                                class="form-control border-input"
-                                value="">
-                            <option value="123" selected>請選擇</option>
-                            <option value="1">第1梯</option>
-                            <option value="2">第2梯</option>
-                            <option value="3">第3梯</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label>學員名稱</label>
-                        <input type="text"
-                               class="form-control border-input"
-                               value="" />
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label>原本職業</label>
-                        <input type="number"
-                               class="form-control border-input"
-                               value="" />
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label>目標職業</label>
-                        <input type="number"
-                               class="form-control border-input"
-                               value="" />
-                    </div>
-                </div>
-                <div class="col-md-12">
-                    <div class="form-group">
-                        <label>大頭貼</label>
-                        <input type="file"
-                               class="form-control border-input"
-                               value="" />
-                        <small>(建議尺寸： 500px X 500px)</small>
-                    </div>
-                    <img width="30%"
-                         style="margin-bottom: 20px;"
-                         src="https://fakeimg.pl/500x500"
-                         alt="" />
-                </div>
+                <div class="row" style="display: flex; flex-wrap: wrap">
+                    <div class="col-md-6">
+                        <div class="form-group">
 
-                <div class="col-md-12">
-                    <div class="form-group">
-                        <label>狀態</label>
-                        <select type="text"
-                                class="form-control border-input"
-                                value="">
-                            <option value="" selected>請選擇</option>
-                            <option value="">培訓中</option>
-                            <option value="">結訓</option>
-                            <option value="">退訓</option>
-                        </select>
+                            @Html.LabelFor(model => model, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <select type="text"
+                                    class="form-control border-input"
+                                    value="">
+                                <option value="123" selected>請選擇</option>
+                                
+                                @{
+                                    string option = "";
+
+                                    //for(int i =1 ; i< Model._class\\\)
+
+                                }
+
+                                <option value="1">第1梯</option>
+                                <option value="2">第2梯</option>
+                                <option value="3">第3梯</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>學員名稱</label>
+                            <input type="text"
+                                   class="form-control border-input"
+                                   value="" />
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>原本職業</label>
+                            <input type="number"
+                                   class="form-control border-input"
+                                   value="" />
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>目標職業</label>
+                            <input type="number"
+                                   class="form-control border-input"
+                                   value="" />
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label>大頭貼</label>
+                            <input type="file"
+                                   class="form-control border-input"
+                                   value="" />
+                            <small>(建議尺寸： 500px X 500px)</small>
+                        </div>
+                        <img width="30%"
+                             style="margin-bottom: 20px;"
+                             src="https://fakeimg.pl/500x500"
+                             alt="" />
+                    </div>
+
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label>狀態</label>
+                            <select type="text"
+                                    class="form-control border-input"
+                                    value="">
+                                <option value="" selected>請選擇</option>
+                                <option value="">培訓中</option>
+                                <option value="">結訓</option>
+                                <option value="">退訓</option>
+                            </select>
+                        </div>
                     </div>
                 </div>
+                <div class="clearfix"></div>
+
             </div>
-            <div class="clearfix"></div>
-
-        </div>
-        <div class="modal-footer">
-            <button type="button"
-                    class="btn btn-secondary"
-                    data-dismiss="modal">
-                取消
-            </button>
-            <button type="button" class="btn btn-primary">確認</button>
-        </div>
+            <div class="modal-footer">
+                <button type="button"
+                        class="btn btn-secondary"
+                        data-dismiss="modal">
+                    取消
+                </button>
+                <button type="button" class="btn btn-primary">確認</button>
+            </div>
 
 
-       
- </form>
-</div>
+
+        }
+    </div>
 
 
 </body>
+
 
 <script src="/Areas/Areas/orid_admin/assets/js/jquery-1.10.2.js" type="text/javascript"></script>
 <script src="/Areas/Areas/orid_admin/assets/js/bootstrap.min.js" type="text/javascript"></script>

@@ -12,9 +12,13 @@ namespace Rocket_Admin.Models
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int Session { get; set; }
+
         [Display(Name = "初始日期")]
         public DateTime startDate { get; set; }
         [Display(Name = "結訓日期")]
         public DateTime? endDate { get; set; }
+
+
+        public virtual ICollection<Student> Students { get; set; }
     }
 }
