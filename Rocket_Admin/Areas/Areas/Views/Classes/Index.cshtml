@@ -64,32 +64,32 @@
                             <th></th>
                             </thead>
                             <tbody>
-                            @foreach (var item in Model)
-                            {
-                                <tr>
-                                    <td>第   @item.Session 梯</td>
-                                    <td>@Html.DisplayFor(modelItem => item.startDate)</td>
-                                    <td>@Html.DisplayFor(modelItem => item.endDate)</td>
-                                    <td class="td-actions">
-                                        <a href="#"
-                                           rel="tooltip"
-                                           data-toggle="modal"
-                                           data-target="#add_class"
-                                           class="btn btn-success btn-simple btn-xs"
-                                           data-original-title="編輯">
-                                            <i class="ti-pencil-alt"></i>
-                                        </a>
-                                       
-                                        <a href="/Areas/Classes/Delete/@item.Session" 
-                                           rel="tooltip"
-                                           title=""
-                                           class="btn btn-danger btn-simple btn-xs"
-                                           data-original-title="刪除">
-                                            <i class="ti-close"></i>
-                                        </a>
-                                    </td>
-                                </tr>
-                            }
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>第   @item.Session 梯</td>
+                                        <td>@Html.DisplayFor(modelItem => item.startDate)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.endDate)</td>
+                                        <td class="td-actions">
+                                            <a href="#"
+                                               rel="tooltip"
+                                               data-toggle="modal"
+                                               data-target="#add_class"
+                                               class="btn btn-success btn-simple btn-xs"
+                                               data-original-title="編輯">
+                                                <i class="ti-pencil-alt"></i>
+                                            </a>
+
+                                            <a href="/Areas/Classes/Delete/@item.Session"
+                                               rel="tooltip"
+                                               title=""
+                                               class="btn btn-danger btn-simple btn-xs"
+                                               data-original-title="刪除">
+                                                <i class="ti-close"></i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                }
                             </tbody>
                         </table>
                     </div>
@@ -100,40 +100,19 @@
 </div>
 
 
+@section model {
 
+    <!-- 新增梯次 Modal -->
+    <div class="modal fade add_class"
+         id="add_class"
+         tabindex="-1"
+         role="dialog"
+         aria-labelledby="add_class"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
 
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Session)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.startDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.endDate)
-        </th>
-        <th></th>
-    </tr>
+            <iframe src="/Areas/Classes/Create" width="100%" height="417px" frameborder="0" scrolling="no" style="border-radius: 6px"></iframe>
 
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Session)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.startDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.endDate)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.Session }) |
-                @Html.ActionLink("Details", "Details", new { id = item.Session }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.Session })
-            </td>
-        </tr>
-    }
-
-</table>
+        </div>
+    </div>
+}

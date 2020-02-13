@@ -12,9 +12,10 @@ namespace Rocket_Admin.Models
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int Session { get; set; }
-
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         [Display(Name = "初始日期")]
         public DateTime startDate { get; set; }
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         [Display(Name = "結訓日期")]
         public DateTime? endDate { get; set; }
 
