@@ -45,7 +45,7 @@
             <h5 class="modal-title" id="add_class">
                 新增梯次
                 <button type="button"
-                        class="close"
+                        class="close modal_hide"
                         data-dismiss="modal"
                         aria-label="Close">
                     <span aria-hidden="true">&times;</span>
@@ -92,7 +92,7 @@
             </div>
             <div class="modal-footer">
                 <button type="submit"
-                        class="btn btn-secondary"
+                        class="btn btn-secondary modal_hide"
                         data-dismiss="modal">
                     取消
                 </button>
@@ -111,7 +111,11 @@
 <script src="/Areas/Areas/orid_admin/assets/js/bootstrap-notify.js"></script>
 <script src="/Areas/Areas/orid_admin/assets/js/paper-dashboard.js"></script>
 <script src="/Areas/Areas/orid_admin/assets/js/demo.js"></script>
-
+<script>
+    $(".modal_hide").click(function () {
+        parent.$('.modal').modal('hide');
+    });
+</script>
 </html>
 
 
