@@ -28,37 +28,8 @@
 <body>
     <div class="wrapper">
         <!-- 左選 -->
-        <div class="sidebar"
-             data-background-color="white"
-             data-active-color="danger">
-            <div class="sidebar-wrapper">
-                <div class="logo">
-                    <a href="index.html" class="simple-text">
-                        火箭隊
-                    </a>
-                </div>
-                <ul class="nav">
-                    <li class="active">
-                        <a href="index.html">
-                            <i class="ti-user"></i>
-                            <p>學員管理</p>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="class.html">
-                            <i class="ti-book"></i>
-                            <p>梯次管理</p>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="class.html">
-                            <i class="ti-book"></i>
-                            <p>使用者管理</p>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </div>
+        @RenderSection("sidebar", required: false)
+        
         <div class="main-panel">
             <!-- 上選 -->
             <nav class="navbar navbar-default">

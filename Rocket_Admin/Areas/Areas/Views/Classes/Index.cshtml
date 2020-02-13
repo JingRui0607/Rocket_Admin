@@ -4,7 +4,43 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+@section sidebar
+{
+    <!-- 左選 -->
+    <div class="sidebar"
+         data-background-color="white"
+         data-active-color="danger">
+        <div class="sidebar-wrapper">
+            <div class="logo">
+                <a href="index.html" class="simple-text">
+                    火箭隊
+                </a>
+            </div>
+            <ul class="nav">
+                <li>
+                    <a href="/Areas/Students/Index">
+                        <i class="ti-user"></i>
+                        <p>學員管理</p>
+                    </a>
+                </li>
+                <li class="active">
+                    <a href="/Areas/Classes/Index">
+                        <i class="ti-book"></i>
+                        <p>梯次管理</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="/Areas/Users/Index">
+                        <i class="ti-book"></i>
+                        <p>使用者管理</p>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+
+}
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -20,20 +56,21 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.startDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.endDate)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Session }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Session }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Session })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.startDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.endDate)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.Session }) |
+                @Html.ActionLink("Details", "Details", new { id = item.Session }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.Session })
+            </td>
+        </tr>
+    }
 
 </table>

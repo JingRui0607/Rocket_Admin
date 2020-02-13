@@ -5,47 +5,186 @@
 }
 
 
+@section sidebar
+{
+    <!-- 左選 -->
+    <div class="sidebar"
+         data-background-color="white"
+         data-active-color="danger">
+        <div class="sidebar-wrapper">
+            <div class="logo">
+                <a href="index.html" class="simple-text">
+                    火箭隊
+                </a>
+            </div>
+            <ul class="nav">
+                <li>
+                    <a href="/Areas/Students/Index">
+                        <i class="ti-user"></i>
+                        <p>學員管理</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="/Areas/Classes/Index">
+                        <i class="ti-book"></i>
+                        <p>梯次管理</p>
+                    </a>
+                </li>
+                <li class="active">
+                    <a href="/Areas/Users/Index">
+                        <i class="ti-book"></i>
+                        <p>使用者管理</p>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Account)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Password)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.PasswordSalt)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.InitDate)
-        </th>
-        <th></th>
-    </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Account)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Password)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PasswordSalt)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.InitDate)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
-        </td>
-    </tr>
 }
 
-</table>
+
+
+<div class="content products_list">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="header">
+                        <h4 class="title">
+
+                            <button class="btn btn-success pull-right"
+                                    type="button"
+                                    name=""
+                                    title=""
+                                    data-toggle="modal"
+                                    data-target="#add_class">
+                                <i class="glyphicon fa fa-plus"></i>新增會員
+                            </button>
+                        </h4>
+                        <p class="category"></p>
+                    </div>
+                    <table class="table table-shopping img-w100">
+                        <thead>
+                            <tr>
+                                <th style="width:10%"> @Html.DisplayNameFor(model => model.Account)</th>
+
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+
+                                    <td>
+                                        @Html.DisplayFor(model => item.Account)
+                                    </td>
+
+
+                                    <td class="td-actions">
+                                        <a href="#"
+                                           rel="tooltip"
+                                           title=""
+                                           data-toggle="modal"
+                                           data-target="#add_class"
+                                           class="btn btn-success btn-simple btn-xs"
+                                           data-original-title="編輯">
+                                            <i class="ti-pencil-alt"></i>
+                                        </a>
+                                        <a href="#"
+                                           rel="tooltip"
+                                           title=""
+                                           class="btn btn-danger btn-simple btn-xs"
+                                           data-original-title="刪除">
+                                            <i class="ti-close"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+@section model {
+    <!-- 新增 Modal -->
+    <div class="modal fade add_class"
+         id="add_class"
+         tabindex="-1"
+         role="dialog"
+         aria-labelledby="add_class"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="add_class">
+                        新增梯次
+                        <button type="button"
+                                class="close"
+                                data-dismiss="modal"
+                                aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </h5>
+                </div>
+                <div class="modal-body">
+                    @using (Html.BeginForm())
+                    {
+                        @Html.AntiForgeryToken()
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label>梯次</label>
+                                    <input type="number"
+                                           class="form-control border-input"
+                                           value="" />
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label>初始日期</label>
+                                    <input type="date"
+                                           class="form-control border-input"
+                                           value="" />
+                                    <small>(第一次填寫ORID的那個禮拜一)</small>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label>結訓日期</label>
+                                    <input type="date"
+                                           class="form-control border-input"
+                                           value="" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+                    }
+                </div>
+                <div class="modal-footer">
+                    <button type="button"
+                            class="btn btn-secondary"
+                            data-dismiss="modal">
+                        取消
+                    </button>
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">儲存</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 新增 Modal結束 -->
+
+
+}

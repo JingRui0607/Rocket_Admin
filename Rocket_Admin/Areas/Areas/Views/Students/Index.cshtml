@@ -4,6 +4,49 @@
 @{
     ViewBag.Title = "Index";
 }
+
+
+@section sidebar
+{
+    <!-- 左選 -->
+    <div class="sidebar"
+         data-background-color="white"
+         data-active-color="danger">
+        <div class="sidebar-wrapper">
+            <div class="logo">
+                <a href="index.html" class="simple-text">
+                    火箭隊
+                </a>
+            </div>
+            <ul class="nav">
+                <li class="active">
+                    <a href="/Areas/Students/Index">
+                        <i class="ti-user"></i>
+                        <p>學員管理</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="/Areas/Classes/Index">
+                        <i class="ti-book"></i>
+                        <p>梯次管理</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="/Areas/Users/Index">
+                        <i class="ti-book"></i>
+                        <p>使用者管理</p>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    
+
+}
+
+
+
+
 <div class="content products_list">
     <div class="container-fluid">
         <div class="row">
@@ -83,14 +126,14 @@
                                             }
 
                                         }
-                                       @Html.Raw(presence)
+                                        @Html.Raw(presence)
                                     </td>
                                     <td class="td-actions">
                                         <a href="#"
                                            rel="tooltip"
                                            title=""
                                            data-toggle="modal"
-                                           data-target="#add_student"
+                                           data-target="#edit_student"
                                            class="btn btn-success btn-simple btn-xs"
                                            data-original-title="編輯">
                                             <i class="ti-pencil-alt"></i>
@@ -117,6 +160,8 @@
 
 
 @section model {
+
+
     <!-- 新增學員 Modal -->
     <div class="modal fade add_student"
          id="add_student"
@@ -144,7 +189,7 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                
+
                                     <label>梯次</label>
                                     <select type="text"
                                             class="form-control border-input"
@@ -225,6 +270,113 @@
 
     <!-- 新增學員 Modal結束 -->
 
+    <!-- 編輯學員 Modal -->
+    <div class="modal fade edit_student"
+         id="edit_student"
+         tabindex="-1"
+         role="dialog"
+         aria-labelledby="edit_student"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="add_student">
+                        編輯學員<button type="button"
+                                    class="close"
+                                    data-dismiss="modal"
+                                    aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </h5>
+                </div>
+                <div class="modal-body">
+                    @using (Html.BeginForm())
+                    {
+
+                        @Html.AntiForgeryToken()
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+
+                                    <label>梯次</label>
+                                    <select type="text"
+                                            class="form-control border-input"
+                                            value="">
+                                        <option value="123" selected>請選擇</option>
+                                        <option value="1">第1梯</option>
+                                        <option value="2">第2梯</option>
+                                        <option value="3">第3梯</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>學員名稱</label>
+                                    <input type="text"
+                                           class="form-control border-input"
+                                           value="" />
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>原本職業</label>
+                                    <input type="number"
+                                           class="form-control border-input"
+                                           value="" />
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>目標職業</label>
+                                    <input type="number"
+                                           class="form-control border-input"
+                                           value="" />
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label>大頭貼</label>
+                                    <input type="file"
+                                           class="form-control border-input"
+                                           value="" />
+                                    <small>(建議尺寸： 500px X 500px)</small>
+                                </div>
+                                <img width="30%"
+                                     style="margin-bottom: 20px;"
+                                     src="https://fakeimg.pl/500x500"
+                                     alt="" />
+                            </div>
+
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label>狀態</label>
+                                    <select type="text"
+                                            class="form-control border-input"
+                                            value="">
+                                        <option value="" selected>請選擇</option>
+                                        <option value="">培訓中</option>
+                                        <option value="">結訓</option>
+                                        <option value="">退訓</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+                    }
+                </div>
+                <div class="modal-footer">
+                    <button type="button"
+                            class="btn btn-secondary"
+                            data-dismiss="modal">
+                        取消
+                    </button>
+                    <button type="button" class="btn btn-primary">確認</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 編輯學員 Modal結束 -->
 
 }
 
