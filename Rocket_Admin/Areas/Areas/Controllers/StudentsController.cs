@@ -13,7 +13,7 @@ namespace Rocket_Admin.Areas.Areas.Controllers
     public class StudentsController : Controller
     {
         private Model1 db = new Model1();
-
+        [Authorize]
         // GET: Areas/Students
         public ActionResult Index()
         {

@@ -15,6 +15,7 @@ namespace Rocket_Admin.Areas.Areas.Controllers
         private Model1 db = new Model1();
 
         // GET: Areas/Classes
+        [Authorize]
         public ActionResult Index()
         {
             return View(db.Class.ToList());

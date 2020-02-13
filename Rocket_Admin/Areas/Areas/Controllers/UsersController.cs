@@ -23,28 +23,28 @@ namespace Rocket_Admin.Areas.Areas.Controllers
             return View();
         }
 
-        //[HttpPost] //只接受post
-        //public ActionResult login(string Account, string Password)
-        //{
-        //    User user = new User();
+        [HttpPost]
+        public ActionResult login(string Account, string Password)
+        {
+            User user = new User();
 
-            // member = db.members.Where(x => x.Account == Account && x.PasswordSalt == Password).FirstOrDefault();//FirstOrDefault()只抓第一筆
-            //if (member == null)
-            //{
-            //    ViewBag.Message = "登入失敗";
-            //    return View();
-            //}
-            //string userData = JsonConvert.SerializeObject(member);
-            //SetAuthenTicket(userData, member.Account);
-            //return RedirectToAction("Index", "members", new { Areas = "sys" });
-            // （actionName , controllerName , 路由網址 還不是很懂）
+            user = db.Users.Where(x => x.Account == Account && x.Password == Password).FirstOrDefault();//FirstOrDefault()只抓第一筆
+            if (user == null)
+            {
+                ViewBag.Message = "登入失敗";
+                return View();
+            }
+            string userData = JsonConvert.SerializeObject(user);
+            SetAuthenTicket(userData, user.Account);
+            return RedirectToAction("Index", "Students", new { Areas = "Areas" });
+             
 
 
 
-            
-        //}
 
-        void SetAuthenTicket(string userData, string userId)
+        }
+
+            void SetAuthenTicket(string userData, string userId)
         {
             //宣告一個驗證票
             FormsAuthenticationTicket ticket = new FormsAuthenticationTicket(1, userId, DateTime.Now, DateTime.Now.AddHours(2), false, userData);
@@ -58,7 +58,7 @@ namespace Rocket_Admin.Areas.Areas.Controllers
         }
 
 
-
+            [Authorize]
         // GET: Areas/Users
         public ActionResult Index()
         {
