@@ -18,7 +18,28 @@ namespace Rocket_Admin.Areas.Areas.Controllers
         // GET: Areas/Students
         public ActionResult Index()
         {
+            ViewBag.Class = db.Class.Max(x => x.Session);
+
             return View(db.Student.ToList());
+        }
+
+        [Authorize]
+        [HttpPost]
+        public ActionResult Index(int classNum)
+        {
+
+            ViewBag.Class = db.Class.Max(x => x.Session);
+            var students = db.Student.AsQueryable();
+            if (classNum != 123)
+            {
+                students = students.Where(x => x.CId == classNum);
+            }
+
+
+
+            ViewBag.ClassNum = classNum;
+
+            return View(students.ToList());
         }
 
         // GET: Areas/Students/Details/5
@@ -68,7 +89,7 @@ namespace Rocket_Admin.Areas.Areas.Controllers
                 string savedName = Path.Combine(Server.MapPath("/Areas/Areas/orid_admin/assets/img/user"), fileName);
                 upfile.SaveAs(savedName);
 
-     
+
 
                 student.image = fileName;
 
@@ -106,7 +127,7 @@ namespace Rocket_Admin.Areas.Areas.Controllers
 
             db.Student.Add(student);
             db.SaveChanges();
-            ViewBag.close ="true";
+            ViewBag.close = "true";
             return View();
 
         }
@@ -133,7 +154,7 @@ namespace Rocket_Admin.Areas.Areas.Controllers
         // 詳細資訊，請參閱 https://go.microsoft.com/fwlink/?LinkId=317598。
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "id,name,CId,exOccupation,futureOccupation,presence")] Student student, HttpPostedFileBase upfile,string hiddenImage)
+        public ActionResult Edit([Bind(Include = "id,name,CId,exOccupation,futureOccupation,presence")] Student student, HttpPostedFileBase upfile, string hiddenImage)
         {
             if (ModelState.IsValid)
             {

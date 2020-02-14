@@ -60,28 +60,43 @@
                     <div class="header">
                         <h4 class="title">
                             <div class="dropdown pull-left">
-                            @using (Html.BeginForm())
-                            {
-                                @Html.AntiForgeryToken()
-                                <button href="#"
-                                        class="btn dropdown-toggle"
-                                        data-toggle="dropdown"
-                                        aria-expanded="false">
-                                    梯次篩選
-                                    <b class="caret"></b>
-                                </button>
+                        <form id="formClass" action="/Areas/Students/Index" method="post">
+                               
+                                <label>梯次篩選</label>
+                                <select type="text"
+                                        class="form-control border-input"
+                                        id="classNum"
+                                    
+                                        name="classNum">
+                                    <option value="123" selected>請選擇</option>
 
-                                
-
+                                    @{
 
 
 
-                                <ul class="dropdown-menu">
-                                    <li><a href="#">1</a></li>
-                                    <li><a href="#">2</a></li>
-                                    <li><a href="#">3</a></li>
-                                </ul>
-                            }
+                                        string option = "";
+                                        int max = ViewBag.Class;
+                                        for (int i = 1; i <= max; i++)
+                                        {
+                                            if (i == ViewBag.ClassNum)
+                                            {
+                                                <option value="@i" selected="selected">第@(i)梯</option>
+
+                                            }
+                                            else
+                                            {
+                                                <option value="@i">第@(i)梯</option>
+                                            }
+                                            
+
+                                        }
+
+                                    }
+                                    
+
+                               
+                                </select>
+                        </form>
                             </div>
                             <button class="btn btn-success pull-right"
                                     type="button"
@@ -174,7 +189,19 @@
     </div>
 </div>
 
+<script>
 
+    var classNum = document.querySelector('#classNum');
+    var formClass = document.querySelector('#formClass');
+
+    classNum.addEventListener('change', function() {
+      
+        formClass.submit(classNum.value);
+
+
+    });
+
+</script>
 
 @section model {
 
@@ -301,8 +328,8 @@
     </div>
     <script>
     $(".modal_hide").click(function () {
-            $('.modal').modal('hide')
-        });</script>
+        $('.modal').modal('hide')
+    });</script>
     <!-- 編輯學員 Modal結束 -->
 
 }
