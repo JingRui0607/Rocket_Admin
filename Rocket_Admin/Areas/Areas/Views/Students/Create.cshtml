@@ -147,14 +147,17 @@
                             <input type="file"
                                    class="form-control border-input"
                                    value="" 
-                                   name="upfile"/>
+                                   name="upfile"
+                                   id="imgInp"/>
                             <small>(建議尺寸： 500px X 500px)</small>
                         </div>
                         <img width="30%"
+                             id="preview_progressbarTW_img"
                              style="margin-bottom: 20px;"
                              src="https://fakeimg.pl/500x500"
                              alt="" />
                     </div>
+                    
 
                     <div class="col-md-12">
                         <div class="form-group">
@@ -203,6 +206,25 @@
     $( ".modal_hide" ).click(function() {
         parent.$('.modal').modal('hide');
     });
+</script>
+
+@*同時顯示圖片*@
+
+<script>$("#imgInp").change(function(){
+        //當檔案改變後，做一些事 
+        readURL(this);   // this代表<input id="imgInp">
+    });
+</script>
+<script>
+    function readURL(input){
+        if(input.files && input.files[0]){
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                $("#preview_progressbarTW_img").attr('src', e.target.result);
+            }
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
 </script>
 </html>
 
