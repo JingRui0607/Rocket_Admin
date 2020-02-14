@@ -31,8 +31,8 @@
                 </li>
                 <li>
                     <a href="/Areas/Users/Index">
-                        <i class="ti-book"></i>
-                        <p>使用者管理</p>
+                        <i class="ti-lock"></i>
+                        <p>密碼修改</p>
                     </a>
                 </li>
             </ul>
@@ -40,6 +40,13 @@
     </div>
 
 }
+
+@section topbar{
+    <a class="navbar-brand" href="/Areas/Students/Index">梯次管理</a>
+
+}
+
+
 <!-- 內容 -->
 <div class="content">
     <div class="container-fluid">
@@ -109,7 +116,7 @@
          role="dialog"
          aria-labelledby="add_class"
          aria-hidden="true">
-        <div class="modal-dialog" role="document" >
+        <div class="modal-dialog" role="document">
 
             <iframe src="/Areas/Classes/Create" width="100%" height="417px" frameborder="0" scrolling="no" style="border-radius: 6px"></iframe>
 

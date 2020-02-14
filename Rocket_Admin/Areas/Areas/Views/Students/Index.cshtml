@@ -33,14 +33,19 @@
                 </li>
                 <li>
                     <a href="/Areas/Users/Index">
-                        <i class="ti-book"></i>
-                        <p>使用者管理</p>
+                        <i class="ti-lock"></i>
+                        <p>密碼修改</p>
                     </a>
                 </li>
             </ul>
         </div>
     </div>
 
+
+}
+
+@section topbar{
+    <a class="navbar-brand" href="/Areas/Students/Index">學員管理</a>
 
 }
 
@@ -140,19 +145,13 @@
                                         {
                                             @Html.AntiForgeryToken()
                                             <input type="hidden" name="id" value="@item.id" />
-                                            <button  class="btn btn-danger btn-simple btn-xs" type="submit" onclick="javascript:if (!window.confirm('你確定要刪除嗎?')) return false;">X</button>
+                                            <button  class="btn btn-danger btn-simple btn-xs" type="submit" style="font-size: 19px; transform: scale(1.5, 1.1);" onclick="javascript:if (!window.confirm('你確定要刪除嗎?')) return false;">X</button>
 
 
                                         }
+                                        
 
-
-                                        <a href="/Areas/Students/Delete/@item.id"
-                                           rel="tooltip"
-                                           title=""
-                                           class="btn btn-danger btn-simple btn-xs"
-                                           data-original-title="刪除">
-                                            <i class="ti-close"></i>
-                                        </a>
+                                        
                                     </td>
                                 </tr>
 

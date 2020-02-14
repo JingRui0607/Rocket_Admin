@@ -1,4 +1,5 @@
-﻿@model Rocket_Admin.Models.Student
+﻿@using Rocket_Admin.Models
+@model Rocket_Admin.Models.Student
 
 @{
     ViewBag.Title = "Edit";
@@ -41,8 +42,8 @@
         </div>
     </div>
 
-
 }
+
 
 <!-- 內容 -->
 <div class="content">
@@ -54,112 +55,141 @@
                         <h4 class="title">Chita</h4>
                     </div>
                     <div class="content">
-                    @using (Html.BeginForm())
-                    {
-                        @Html.AntiForgeryToken()
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label>梯次</label>
-                                    <select type="text"
-                                            class="form-control border-input"
-                                            value= @Model.CId 
-                                        name="classNum">
-                                        <option value="123" selected>請選擇</option>
+                        @using (Html.BeginForm(null, null, FormMethod.Post, new { enctype = "multipart/form-data" }))
+                        {
+                            @Html.AntiForgeryToken()
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>梯次</label>
+                                        <select type="text"
+                                                class="form-control border-input"
+                                                value=""
+                                                name="CId">
 
-                                        @{
-                                            string option = "";
-                                            int max = ViewBag.Class;
-                                            for (int i = 1; i <= max; i++)
-                                            {
 
-                                                option += $"<option value=\"{i}\">第{i}梯</option>";
+                                            @{
+                                                string option = "";
+                                                int max = ViewBag.Class;
+                                                for (int i = 1; i <= max; i++)
+                                                {
+                                                    if (i == @Model.CId)
+                                                    {
+                                                        <option value="@i" selected="selected">第@(i)梯</option>
+
+                                                    }
+                                                    else
+                                                    {
+                                                        <option value="@i">第@(i)梯</option>
+                                                    }
+
+
+                                                }
+
 
                                             }
 
-                                        }
-                                        @Html.Raw(option)
 
 
-                                      
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label>學員名稱</label>
-                                    <input required
-                                           type="text"
-                                           class="form-control border-input"
-                                           value= @Model.name
-                                           name="name"/>
 
+                                        </select>
+                                    </div>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label>原本職業</label>
-                                    <input required
-                                           type="text"
-                                           class="form-control border-input"
-                                           value= @Model.exOccupation
-                                           name="oldOccupation"/>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label>目標職業</label>
-                                    <input required
-                                           type="text"
-                                           class="form-control border-input"
-                                           value=@Model.futureOccupation
-                                           targetOccupation
-                                           />
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label>大頭貼</label>
-                                    <input required
-                                           type="file"
-                                           class="form-control border-input"
-                                           value=""
-                                           name="upfile"/>
-                                    <small>(建議尺寸： 500px X 500px)</small>
-                                </div>
-                                <img style="margin-bottom: 20px; width: 200px; max-width: 100%"
-                                     src="assets/img/user/Chita.JPG"
-                                     alt=""/>
-                            </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>學員名稱</label>
+                                        <input required
+                                               type="text"
+                                               class="form-control border-input"
+                                               value=@Model.name
+                                               name="name" />
 
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label>狀態</label>
-                                    <select required
-                                            type="text"
-                                            class="form-control border-input"
-                                            value=@Model.presence
-                                            name="presence">
-                                        <option value="" selected>請選擇</option>
-                                        <option value="1">培訓中</option>
-                                        <option value="0">結訓</option>
-                                        <option value="2">退訓</option>
-                                    </select>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="text-center">
-                            <button type="submit"
-                                    class="btn btn-info btn-fill btn-wd">
-                                確認修改
-                            </button>
-                        </div>
-                        <div class="clearfix"></div>
-                    }
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>原本職業</label>
+                                        <input required
+                                               type="text"
+                                               class="form-control border-input"
+                                               value=@Model.exOccupation
+                                               name="exOccupation" />
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>目標職業</label>
+                                        <input required
+                                               type="text"
+                                               class="form-control border-input"
+                                               value=@Model.futureOccupation
+                                               targetOccupation
+                                               name="futureOccupation" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>大頭貼</label>
+                                        <input type="hidden" name="hiddenImage" value="@Model.image" />
+                                        <input required
+                                               type="file"
+                                               class="form-control border-input"
+                                               value=""
+                                               name="upfile"
+                                               id="imgInp" />
+                                        <small>(建議尺寸： 500px X 500px)</small>
+                                    </div>
+                                    <img style="margin-bottom: 20px; width: 200px; max-width: 100%"
+                                         src="/Areas/Areas/orid_admin/assets/img/user/@Model.image"
+                                         alt=""
+                                         id="preview_progressbarTW_img" />
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>狀態</label>
+                                        <select required
+                                                type="text"
+                                                class="form-control border-input"
+                                                value=@Model.presence
+                                                name="presence">
+                                            @{
+                                                string x = "", y = "", z = "";
+
+                                                switch (@Model.presence)
+                                                {
+                                                    case EnumList.presenceType.結訓:
+                                                        x = "selected=\"selected\"";
+                                                        break;
+                                                    case EnumList.presenceType.陪訓中:
+                                                        y = "selected=\"selected\"";
+                                                        break;
+                                                    case EnumList.presenceType.退訓:
+                                                        z = "selected=\"selected\"";
+                                                        break;
+
+
+                                                }
+                                            }
+                                            <option value="1" @y>培訓中</option>
+                                            <option value="0" @x>結訓</option>
+                                            <option value="2" @z>退訓</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="text-center">
+                                <button type="submit"
+                                        class="btn btn-info btn-fill btn-wd">
+                                    確認修改
+                                </button>
+                            </div>
+                            <div class="clearfix"></div>
+                        }
                     </div>
                 </div>
             </div>
@@ -167,6 +197,23 @@
     </div>
 </div>
 
+<script>
+    $("#imgInp").change(function () {
+        //當檔案改變後，做一些事
+        readURL(this);   // this代表<input id="imgInp">
+    });
+</script>
+<script>
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                $("#preview_progressbarTW_img").attr('src', e.target.result);
+            }
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+</script>
 
 
 
@@ -180,4 +227,6 @@
 
 
 
-}
+
+
+

@@ -133,10 +133,41 @@ namespace Rocket_Admin.Areas.Areas.Controllers
         // 詳細資訊，請參閱 https://go.microsoft.com/fwlink/?LinkId=317598。
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "id,name,image,_class,startDate,endDate,exOccupation,futureOccupation,initDate,firstMon,presence")] Student student)
+        public ActionResult Edit([Bind(Include = "id,name,CId,exOccupation,futureOccupation,presence")] Student student, HttpPostedFileBase upfile,string hiddenImage)
         {
             if (ModelState.IsValid)
             {
+                if (upfile != null)
+                {
+                    if (upfile.ContentType.IndexOf("image", System.StringComparison.Ordinal) == -1)
+                    {
+
+                        return Content("檔案型態錯誤");
+                    }
+                    //取得副檔名
+                    string extension = upfile.FileName.Split('.')[upfile.FileName.Split('.').Length - 1];
+                    //新檔案名稱
+                    string fileName = String.Format("{0}-{1:yyyyMMddhhmmsss}.{2}", student.name, DateTime.Now, extension);
+                    string savedName = Path.Combine(Server.MapPath("/Areas/Areas/orid_admin/assets/img/user"), fileName);
+                    upfile.SaveAs(savedName);
+
+
+
+                    student.image = fileName;
+
+
+
+
+                }
+                else
+                {
+                    student.image = hiddenImage;
+                }
+
+
+
+
+
                 db.Entry(student).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
