@@ -116,6 +116,7 @@ namespace Rocket_Admin.Areas.Areas.Controllers
         {
             if (id == null)
             {
+
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Student student = db.Student.Find(id);
@@ -123,6 +124,7 @@ namespace Rocket_Admin.Areas.Areas.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.Class = db.Class.Max(x => x.Session);
             return View(student);
         }
 

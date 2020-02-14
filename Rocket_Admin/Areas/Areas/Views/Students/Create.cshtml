@@ -43,7 +43,7 @@
 
 
 
-@if (ViewBag.close == "true")
+@if (ViewBag.close =="true")
 {
     <script>
     
@@ -111,6 +111,7 @@
                                 class="form-control border-input"
                                 value=""
                                 name="name"
+                                required
                             />
 
                            
@@ -124,6 +125,7 @@
                                 class="form-control border-input"
                                 value=""
                                 name="oldOccupation"
+                                required
                             />
                             </div>
                     </div>
@@ -135,6 +137,7 @@
                                 class="form-control border-input"
                                 value=""
                                 name="targetOccupation"
+                                required
                             />
                         </div>
                     </div>

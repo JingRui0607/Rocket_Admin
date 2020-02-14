@@ -89,4 +89,3 @@ C:\Users\jingrui\source\repos\Rocket_Admin\Rocket_Admin\obj\Debug\Rocket_Admin.c
 C:\Users\jingrui\source\repos\Rocket_Admin\Rocket_Admin\obj\Debug\Rocket_Admin.Migrations.UpdateModel.resources
 C:\Users\jingrui\source\repos\Rocket_Admin\Rocket_Admin\obj\Debug\Rocket_Admin.Migrations.CreateUserModel.resources
 C:\Users\jingrui\source\repos\Rocket_Admin\Rocket_Admin\obj\Debug\Rocket_Admin.Migrations.update_StudentForeignKey.resources
-C:\Users\jingrui\source\repos\Rocket_Admin\Rocket_Admin\obj\Debug\Rocket_Admin.csprojAssemblyReference.cache
