@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -38,8 +39,8 @@ namespace Rocket_Admin.Areas.Areas.Controllers
         // GET: Areas/Students/Create
         public ActionResult Create()
         {
-            
-            ViewBag.Class= db.Class.Max(x => x.Session);
+
+            ViewBag.Class = db.Class.Max(x => x.Session);
 
             return View();
         }
@@ -49,17 +50,65 @@ namespace Rocket_Admin.Areas.Areas.Controllers
         // 詳細資訊，請參閱 https://go.microsoft.com/fwlink/?LinkId=317598。
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "id,name,image,exOccupation,futureOccupation,initDate,firstMon,presence,CId")] Student student)
+        public ActionResult Create(string classNum, string name, string oldOccupation, string targetOccupation, string presence, HttpPostedFileBase upfile)
         {
-            if (ModelState.IsValid)
+            Student student = new Student();
+
+            if (upfile != null)
             {
-                db.Student.Add(student);
-                db.SaveChanges();
-                ViewBag.close = "true";
-                return View();
+                if (upfile.ContentType.IndexOf("image", System.StringComparison.Ordinal) == -1)
+                {
+
+                    return Content("檔案型態錯誤");
+                }
+                //取得副檔名
+                string extension = upfile.FileName.Split('.')[upfile.FileName.Split('.').Length - 1];
+                //新檔案名稱
+                string fileName = String.Format("{0}-{1:yyyyMMddhhmmsss}.{2}", name, DateTime.Now, extension);
+                string savedName = Path.Combine(Server.MapPath("/Areas/Areas/orid_admin/assets/img/user"), fileName);
+                upfile.SaveAs(savedName);
+
+     
+
+                student.image = fileName;
+
+
+
+
+            }
+            else
+            {
+                student.image = "user.png";
             }
 
-            return View(student);
+
+            student.CId = Convert.ToInt16(classNum);
+            student.name = name;
+            student.exOccupation = oldOccupation;
+            student.futureOccupation = targetOccupation;
+            if (presence == "0")
+            {
+                student.presence = EnumList.presenceType.結訓;
+            }
+
+
+            else if (presence == "1")
+            {
+                student.presence = EnumList.presenceType.陪訓中;
+            }
+
+            else
+            {
+                student.presence = EnumList.presenceType.退訓;
+            }
+
+            ViewBag.Class = db.Class.Max(x => x.Session);
+
+            db.Student.Add(student);
+            db.SaveChanges();
+            ViewBag.close ="true";
+            return View();
+
         }
 
         // GET: Areas/Students/Edit/5

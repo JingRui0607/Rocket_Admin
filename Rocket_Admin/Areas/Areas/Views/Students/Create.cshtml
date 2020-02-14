@@ -6,7 +6,7 @@
     //不套master page
     Layout = null;
 }
-<html>
+<html lang="en">
 <head>
     <meta charset="utf-8" />
     <link rel="apple-touch-icon"
@@ -41,6 +41,8 @@
     </style>
 </head>
 
+
+
 @if (ViewBag.close == "true")
 {
     <script>
@@ -48,7 +50,7 @@
         parent.$('.modal').modal('hide');
         parent.location.href = "/Areas/Students/Index";
 
-    </script>
+    </script>    
 }
 
 <body>
@@ -64,7 +66,7 @@
                 </button>
             </h5>
         </div>
-        @using (Html.BeginForm())
+        @using (Html.BeginForm(null , null ,FormMethod.Post,new {enctype="multipart/form-data"}))
         {
             @Html.AntiForgeryToken()
             <div class="modal-body">
@@ -78,8 +80,8 @@
                             <label>梯次</label>
                             <select type="text"
                                     class="form-control border-input"
-                                    value=""
-                                    name="class">
+                                    
+                                    name="classNum">
                                 <option value="123" selected>請選擇</option>
 
                                 @{
@@ -104,9 +106,12 @@
                             <label>學員名稱</label>
                             
                             
-                            @Html.EditorFor(model => model.name, new { htmlAttributes = new { @class = "form-control border-input" } })
-                            @Html.ValidationMessageFor(model => model.name, "", new { @class = "text-danger" })
-                            
+                            <input
+                                type="text"
+                                class="form-control border-input"
+                                value=""
+                                name="name"
+                            />
 
                            
                         </div>
@@ -114,15 +119,23 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label>原本職業</label>
-                            @Html.EditorFor(model => model.exOccupation, new { htmlAttributes = new { @class = "form-control border-input" } })
-                            @Html.ValidationMessageFor(model => model.exOccupation, "", new { @class = "text-danger" })
-                        </div>
+                            <input
+                                type="text"
+                                class="form-control border-input"
+                                value=""
+                                name="oldOccupation"
+                            />
+                            </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
                             <label>目標職業</label>
-                            @Html.EditorFor(model => model.futureOccupation, new { htmlAttributes = new { @class = "form-control border-input" } })
-                            @Html.ValidationMessageFor(model => model.futureOccupation, "", new { @class = "text-danger" })
+                            <input
+                                type="text"
+                                class="form-control border-input"
+                                value=""
+                                name="targetOccupation"
+                            />
                         </div>
                     </div>
                     <div class="col-md-12">
@@ -130,7 +143,8 @@
                             <label>大頭貼</label>
                             <input type="file"
                                    class="form-control border-input"
-                                   value="" />
+                                   value="" 
+                                   name="upfile"/>
                             <small>(建議尺寸： 500px X 500px)</small>
                         </div>
                         <img width="30%"
@@ -144,11 +158,12 @@
                             <label>狀態</label>
                             <select type="text"
                                     class="form-control border-input"
-                                    value="">
+                                    value=""
+                                    name="presence">
                                 <option value="" selected>請選擇</option>
-                                <option value="">培訓中</option>
-                                <option value="">結訓</option>
-                                <option value="">退訓</option>
+                                <option value="1">培訓中</option>
+                                <option value="0">結訓</option>
+                                <option value="2">退訓</option>
                             </select>
                         </div>
                     </div>
@@ -188,108 +203,3 @@
 </script>
 </html>
 
-@*@using (Html.BeginForm())
-    {
-        @Html.AntiForgeryToken()
-
-        <div class="form-horizontal">
-            <h4>Student</h4>
-            <hr />
-            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-            <div class="form-group">
-                @Html.LabelFor(model => model.name, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.name, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.name, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.image, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.image, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.image, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-            <div class="form-group">
-                @Html.LabelFor(model => model._class, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model._class, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model._class, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.startDate, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.startDate, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.startDate, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.endDate, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.endDate, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.endDate, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.exOccupation, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.exOccupation, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.exOccupation, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.futureOccupation, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.futureOccupation, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.futureOccupation, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.initDate, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.initDate, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.initDate, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.firstMon, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.firstMon, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.firstMon, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.presence, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    <div class="checkbox">
-                        @Html.EditorFor(model => model.presence)
-                        @Html.ValidationMessageFor(model => model.presence, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-            </div>
-
-            <div class="form-group">
-                <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="Create" class="btn btn-default" />
-                </div>
-            </div>
-        </div>
-    }
-
-    <div>
-        @Html.ActionLink("Back to List", "Index")
-    </div>
-
-    @section Scripts {
-        @Scripts.Render("~/bundles/jqueryval")
-    }*@
