@@ -37,14 +37,14 @@ namespace Rocket_Admin.Areas.Areas.Controllers
             string userData = JsonConvert.SerializeObject(user);
             SetAuthenTicket(userData, user.Account);
             return RedirectToAction("Index", "Students", new { Areas = "Areas" });
-             
+
 
 
 
 
         }
 
-            void SetAuthenTicket(string userData, string userId)
+        void SetAuthenTicket(string userData, string userId)
         {
             //宣告一個驗證票
             FormsAuthenticationTicket ticket = new FormsAuthenticationTicket(1, userId, DateTime.Now, DateTime.Now.AddHours(2), false, userData);
@@ -57,11 +57,11 @@ namespace Rocket_Admin.Areas.Areas.Controllers
             Response.Cookies.Add(authenticationcookie);
         }
 
-            public ActionResult SignOut()
-            {
-                FormsAuthentication.SignOut();
-                return RedirectToAction("login");
-            }
+        public ActionResult SignOut()
+        {
+            FormsAuthentication.SignOut();
+            return RedirectToAction("login");
+        }
 
 
 
@@ -72,19 +72,33 @@ namespace Rocket_Admin.Areas.Areas.Controllers
             return View();
         }
 
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public ActionResult Index(string oldPassword ,string newPassword ,string newPassword2 )
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        db.Users.Add(user);
-        //        db.SaveChanges();
-        //        return RedirectToAction("Index");
-        //    }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Index(string oldPassword, string newPassword, string newPassword2)
+        {
+            Models.User users = db.Users.Where(x => x.Account == User.Identity.Name && x.Password == oldPassword).FirstOrDefault();
 
-        //    return View(user);
-        //}
+            if (users == null)
+            {
+                ViewBag.Message = "舊密碼錯誤";
+                return View();
+            }
+
+            if (newPassword != newPassword2)
+            {
+                ViewBag.Message = "新密碼不相同";
+                return View();
+            }
+
+            users.Password = newPassword;
+            db.Entry(users).State = EntityState.Modified;
+            db.SaveChanges();
+            ViewBag.OK = "OK";
+            return View();
+
+
+
+        }
 
         // GET: Areas/Users/Details/5
         public ActionResult Details(int? id)
