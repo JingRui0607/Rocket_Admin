@@ -4,47 +4,111 @@
     ViewBag.Title = "Edit";
 }
 
-<h2>Edit</h2>
-
-
-@using (Html.BeginForm())
+@section sidebar
 {
-    @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
-        <h4>Class</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.HiddenFor(model => model.Session)
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.startDate, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.startDate, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.startDate, "", new { @class = "text-danger" })
+    <!-- 左選 -->
+    <div class="sidebar"
+         data-background-color="white"
+         data-active-color="danger">
+        <div class="sidebar-wrapper">
+            <div class="logo">
+                <a href="index.html" class="simple-text">
+                    火箭隊
+                </a>
             </div>
+            <ul class="nav">
+                <li>
+                    <a href="/Areas/Students/Index">
+                        <i class="ti-user"></i>
+                        <p>學員管理</p>
+                    </a>
+                </li>
+                <li class="active">
+                    <a href="/Areas/Classes/Index">
+                        <i class="ti-book"></i>
+                        <p>梯次管理</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="/Areas/Users/Index">
+                        <i class="ti-book"></i>
+                        <p>使用者管理</p>
+                    </a>
+                </li>
+            </ul>
         </div>
+    </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.endDate, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.endDate, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.endDate, "", new { @class = "text-danger" })
-            </div>
-        </div>
+}
 
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
+
+<div class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="header">
+                        <h4 class="title">第@(Model.Session)梯</h4>
+                    </div>
+                    <div class="content">
+                    @using (Html.BeginForm())
+                    {
+                        @Html.AntiForgeryToken()
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label>梯次</label>
+                                    <input required
+                                           type="number"
+                                           class="form-control border-input"
+                                           value="@Model.Session"
+                                           name="Session"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label>初始日期</label>
+                                    <input required
+                                           type="date"
+                                           class="form-control border-input"
+                                           value=@Model.startDate.ToString("yyyy-MM-dd")
+                                           name="startDate"
+                                           id="stareDate"/>
+                                    <small>(第一次填寫ORID的那個禮拜一)</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label>結訓日期</label>
+                                    <input required
+                                           type="date"
+                                           class="form-control border-input"
+                                           value=@Model.endDate.Value.ToString("yyyy-MM-dd")
+                                           name="endDate"
+                                           id="endDate"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="text-center">
+                            <button type="submit"
+                                    class="btn btn-info btn-fill btn-wd">
+                                確認修改
+                            </button>
+                        </div>
+                        <div class="clearfix"></div>
+                    }
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-}
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
 </div>
 
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}
+
+
+
+
