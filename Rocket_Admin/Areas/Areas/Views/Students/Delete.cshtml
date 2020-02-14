@@ -4,9 +4,9 @@
     ViewBag.Title = "Delete";
 }
 
-<h2>Delete</h2>
+<h2>刪除學員</h2>
 
-<h3>Are you sure you want to delete this?</h3>
+<h3>確定要刪除嗎?</h3>
 <div>
     <h4>Student</h4>
     <hr />
@@ -28,28 +28,14 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model._class)
+            @Html.DisplayNameFor(model => model.CId)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model._class)
+            @Html.DisplayFor(model => model.CId)
         </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.startDate)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.startDate)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.endDate)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.endDate)
-        </dd>
+        
 
         <dt>
             @Html.DisplayNameFor(model => model.exOccupation)
@@ -97,7 +83,7 @@
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
+            <input type="submit" value="刪除" class="btn btn-default" /> |
             @Html.ActionLink("Back to List", "Index")
         </div>
     }

@@ -132,12 +132,20 @@
                                         <a href="/Areas/Students/Edit/@item.id"
                                            rel="tooltip"
                                            title=""
-                                     
-                                           
                                            class="btn btn-success btn-simple btn-xs"
                                            data-original-title="編輯">
                                             <i class="ti-pencil-alt"></i>
                                         </a>
+                                        @using (Html.BeginForm("Delete", "Students"))
+                                        {
+                                            @Html.AntiForgeryToken()
+                                            <input type="hidden" name="id" value="@item.id" />
+                                            <button  class="btn btn-danger btn-simple btn-xs" type="submit" onclick="javascript:if (!window.confirm('你確定要刪除嗎?')) return false;">X</button>
+
+
+                                        }
+
+
                                         <a href="/Areas/Students/Delete/@item.id"
                                            rel="tooltip"
                                            title=""
