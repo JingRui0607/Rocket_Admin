@@ -60,6 +60,9 @@
                     <div class="header">
                         <h4 class="title">
                             <div class="dropdown pull-left">
+                            @using (Html.BeginForm())
+                            {
+                                @Html.AntiForgeryToken()
                                 <button href="#"
                                         class="btn dropdown-toggle"
                                         data-toggle="dropdown"
@@ -67,11 +70,18 @@
                                     梯次篩選
                                     <b class="caret"></b>
                                 </button>
+
+                                
+
+
+
+
                                 <ul class="dropdown-menu">
                                     <li><a href="#">1</a></li>
                                     <li><a href="#">2</a></li>
                                     <li><a href="#">3</a></li>
                                 </ul>
+                            }
                             </div>
                             <button class="btn btn-success pull-right"
                                     type="button"

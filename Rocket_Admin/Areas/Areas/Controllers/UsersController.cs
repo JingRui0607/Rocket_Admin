@@ -27,8 +27,8 @@ namespace Rocket_Admin.Areas.Areas.Controllers
         public ActionResult login(string Account, string Password)
         {
             User user = new User();
-
-            user = db.Users.Where(x => x.Account == Account && x.Password == Password).FirstOrDefault();//FirstOrDefault()只抓第一筆
+            string PasswordHash = Utility.GenerateHash(Password);
+            user = db.Users.Where(x => x.Account == Account && x.Password == PasswordHash).FirstOrDefault();//FirstOrDefault()只抓第一筆
             if (user == null)
             {
                 ViewBag.Message = "登入失敗";
@@ -76,7 +76,8 @@ namespace Rocket_Admin.Areas.Areas.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Index(string oldPassword, string newPassword, string newPassword2)
         {
-            Models.User users = db.Users.Where(x => x.Account == User.Identity.Name && x.Password == oldPassword).FirstOrDefault();
+            string hasholdPassword = Utility.GenerateHash(oldPassword);
+            Models.User users = db.Users.Where(x => x.Account == User.Identity.Name && x.Password == hasholdPassword).FirstOrDefault();
 
             if (users == null)
             {
@@ -84,13 +85,18 @@ namespace Rocket_Admin.Areas.Areas.Controllers
                 return View();
             }
 
-            if (newPassword != newPassword2)
+            if (Utility.GenerateHash(newPassword ) != Utility.GenerateHash(newPassword2))
             {
                 ViewBag.Message = "新密碼不相同";
                 return View();
             }
 
-            users.Password = newPassword;
+            if (Utility.GenerateHash(newPassword) == Utility.GenerateHash(oldPassword))
+            {
+                ViewBag.Message = "新密碼不能與舊密碼相同";
+                return View();
+            }
+            users.Password = Utility.GenerateHash(newPassword);
             db.Entry(users).State = EntityState.Modified;
             db.SaveChanges();
             ViewBag.OK = "OK";
