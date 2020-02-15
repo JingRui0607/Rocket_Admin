@@ -58,6 +58,12 @@
                 <p>梯次管理</p>
               </a>
             </li>
+            <li>
+              <a href="password.html">
+                <i class="ti-lock"></i>
+                <p>密碼修改</p>
+              </a>
+            </li>
           </ul>
         </div>
       </div>
@@ -94,21 +100,13 @@
                 <div class="card">
                   <div class="header">
                     <h4 class="title">
-                      <div class="dropdown pull-left">
-                        <button
-                          href="#"
-                          class="btn dropdown-toggle"
-                          data-toggle="dropdown"
-                          aria-expanded="false"
-                        >
-                          梯次篩選
-                          <b class="caret"></b>
-                        </button>
-                        <ul class="dropdown-menu">
-                          <li><a href="#">1</a></li>
-                          <li><a href="#">2</a></li>
-                          <li><a href="#">3</a></li>
-                        </ul>
+                      <div class="custom-select pull-left">
+                        <select>
+                          <option value="0" hidden>梯次篩選</option>
+                          <option value="1">第 1 梯</option>
+                          <option value="2">第 2 梯</option>
+                          <option value="3">第 3 梯</option>
+                        </select>
                       </div>
                       <button
                         class="btn btn-success pull-right"
@@ -155,13 +153,10 @@
                         </td>
                         <td class="td-actions">
                           <a
-                            href="#"
+                            href="user.html"
                             rel="tooltip"
                             title=""
-                            data-toggle="modal"
-                            data-target="#add_student"
                             class="btn btn-success btn-simple btn-xs"
-                            data-original-title="編輯"
                             ><i class="ti-pencil-alt"></i
                           ></a>
                           <a
@@ -193,13 +188,10 @@
                         </td>
                         <td class="td-actions">
                           <a
-                            href="#"
+                            href="user.html"
                             rel="tooltip"
                             title=""
-                            data-toggle="modal"
-                            data-target="#add_student"
                             class="btn btn-success btn-simple btn-xs"
-                            data-original-title="編輯"
                             ><i class="ti-pencil-alt"></i
                           ></a>
                           <a
@@ -231,13 +223,10 @@
                         </td>
                         <td class="td-actions">
                           <a
-                            href="#"
+                            href="user.html"
                             rel="tooltip"
                             title=""
-                            data-toggle="modal"
-                            data-target="#add_student"
                             class="btn btn-success btn-simple btn-xs"
-                            data-original-title="編輯"
                             ><i class="ti-pencil-alt"></i
                           ></a>
                           <a
@@ -289,8 +278,8 @@
               </button>
             </h5>
           </div>
-          <div class="modal-body">
-            <form>
+          <form>
+            <div class="modal-body">
               <div class="row">
                 <div class="col-md-6">
                   <div class="form-group">
@@ -311,6 +300,7 @@
                   <div class="form-group">
                     <label>學員名稱</label>
                     <input
+                      required
                       type="text"
                       class="form-control border-input"
                       value=""
@@ -321,6 +311,7 @@
                   <div class="form-group">
                     <label>原本職業</label>
                     <input
+                      required
                       type="number"
                       class="form-control border-input"
                       value=""
@@ -331,6 +322,7 @@
                   <div class="form-group">
                     <label>目標職業</label>
                     <input
+                      required
                       type="number"
                       class="form-control border-input"
                       value=""
@@ -341,6 +333,7 @@
                   <div class="form-group">
                     <label>大頭貼</label>
                     <input
+                      required
                       type="file"
                       class="form-control border-input"
                       value=""
@@ -372,18 +365,14 @@
                 </div>
               </div>
               <div class="clearfix"></div>
-            </form>
-          </div>
-          <div class="modal-footer">
-            <button
-              type="button"
-              class="btn btn-secondary"
-              data-dismiss="modal"
-            >
-              取消
-            </button>
-            <button type="button" class="btn btn-primary">確認</button>
-          </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary modal_hide">
+                取消
+              </button>
+              <button type="button" class="btn btn-primary">確認</button>
+            </div>
+          </form>
         </div>
       </div>
     </div>
@@ -395,4 +384,85 @@
   <script src="assets/js/bootstrap-notify.js"></script>
   <script src="assets/js/paper-dashboard.js"></script>
   <script src="assets/js/demo.js"></script>
+  <script>
+    $(".modal_hide").click(function() {
+      $(".modal").modal("hide");
+    });
+  </script>
+
+<script>
+    var x, i, j, selElmnt, a, b, c;
+    /*look for any elements with the class "custom-select":*/
+    x = document.getElementsByClassName("custom-select");
+    for (i = 0; i < x.length; i++) {
+      selElmnt = x[i].getElementsByTagName("select")[0];
+      /*for each element, create a new DIV that will act as the selected item:*/
+      a = document.createElement("DIV");
+      a.setAttribute("class", "select-selected");
+      a.innerHTML = selElmnt.options[selElmnt.selectedIndex].innerHTML;
+      x[i].appendChild(a);
+      /*for each element, create a new DIV that will contain the option list:*/
+      b = document.createElement("DIV");
+      b.setAttribute("class", "select-items select-hide");
+      for (j = 1; j < selElmnt.length; j++) {
+        /*for each option in the original select element,
+        create a new DIV that will act as an option item:*/
+        c = document.createElement("DIV");
+        c.innerHTML = selElmnt.options[j].innerHTML;
+        c.addEventListener("click", function(e) {
+            /*when an item is clicked, update the original select box,
+            and the selected item:*/
+            var y, i, k, s, h;
+            s = this.parentNode.parentNode.getElementsByTagName("select")[0];
+            h = this.parentNode.previousSibling;
+            for (i = 0; i < s.length; i++) {
+              if (s.options[i].innerHTML == this.innerHTML) {
+                s.selectedIndex = i;
+                h.innerHTML = this.innerHTML;
+                y = this.parentNode.getElementsByClassName("same-as-selected");
+                for (k = 0; k < y.length; k++) {
+                  y[k].removeAttribute("class");
+                }
+                this.setAttribute("class", "same-as-selected");
+                break;
+              }
+            }
+            h.click();
+        });
+        b.appendChild(c);
+      }
+      x[i].appendChild(b);
+      a.addEventListener("click", function(e) {
+          /*when the select box is clicked, close any other select boxes,
+          and open/close the current select box:*/
+          e.stopPropagation();
+          closeAllSelect(this);
+          this.nextSibling.classList.toggle("select-hide");
+          this.classList.toggle("select-arrow-active");
+        });
+    }
+    function closeAllSelect(elmnt) {
+      /*a function that will close all select boxes in the document,
+      except the current select box:*/
+      var x, y, i, arrNo = [];
+      x = document.getElementsByClassName("select-items");
+      y = document.getElementsByClassName("select-selected");
+      for (i = 0; i < y.length; i++) {
+        if (elmnt == y[i]) {
+          arrNo.push(i)
+        } else {
+          y[i].classList.remove("select-arrow-active");
+        }
+      }
+      for (i = 0; i < x.length; i++) {
+        if (arrNo.indexOf(i)) {
+          x[i].classList.add("select-hide");
+        }
+      }
+    }
+    /*if the user clicks anywhere outside the select box,
+    then close all select boxes:*/
+    document.addEventListener("click", closeAllSelect);
+    </script>
+    
 </html>
